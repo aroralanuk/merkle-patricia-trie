@@ -96,8 +96,10 @@ class MerklePatriciaTrie:
         """
         if self._secure:
             encoded_key = keccak_hash(encoded_key)
+            # print(encoded_key)
 
         path = NibblePath(encoded_key)
+        # print("Path: ", path)
 
         result = self._update(self._root, path, encoded_value)
 

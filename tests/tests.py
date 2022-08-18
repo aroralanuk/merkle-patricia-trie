@@ -87,6 +87,8 @@ class TestMPT(unittest.TestCase):
 
         key = rlp.encode(b'key')
         value = rlp.encode(b'value')
+        # key = '0x83key', value = '0x85value'
+        print(key)
         trie.update(key, value)
         gotten_value = trie.get(key)
 
@@ -264,3 +266,8 @@ class TestMPT(unittest.TestCase):
         self.assertEqual(trie.get(b'do'), b'not_a_verb')
         with self.assertRaises(KeyError):
             trie.get(b'dog')
+
+if __name__ == '__main__':
+    selectTest = unittest.TestSuite()
+    selectTest.addTest(TestMPT('test_insert_get_one_short'))
+    unittest.TextTestRunner().run(selectTest)
